@@ -1,0 +1,89 @@
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#map {
+    height: 100%;
+}
+
+.hotel__list {
+    position: absolute;
+    top: 10vh;
+    left: 5vw;
+    bottom: 30vh;
+    width: fit-content;
+    border: 2px solid black;
+    z-index: 5;
+    color: white;
+    background-color: #333;
+    opacity: 0.8;
+    border-radius: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.hotel__list>h3 {
+    text-align: center;
+    /* padding: 2rem; */
+    padding: 3px solid lightblue;
+}
+
+.hotel__names {
+    flex: 1;
+    padding: 2rem;
+    cursor: pointer;
+}
+
+.window {
+    height: fit-content;
+    width: fit-content;
+    background-color: #333;
+    color: white;
+    color: 0 2rem;
+}
+
+.window>h2 {
+    border-bottom: 3px solid lightblue !important;
+}
+
+.gm-style-iw-d {
+    overflow: hidden !important;
+}
+
+.gm-style-iw {
+    background-color: #333 !important;
+    opacity: 0.8 !important;
+    box-shadow: 0 2px 7px 7px rgba(0, 0, 0, 0.5);
+}
+
+.address,
+.phone {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.address>i {
+    margin-right: 1 rem;
+    color: tomato;
+}
+
+.phone>i {
+    margin-right: 1 rem;
+    color: green;
+}
+
+.gm-style-iw-t::after {
+    visibility: hidden;
+}
+
+.gm-ui-hover-effect {
+    background: #fff !important;
+    border-radius: 50%;
+}
