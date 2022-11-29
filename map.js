@@ -1,24 +1,31 @@
 let map;
 let markers = [];
-let seleccion = "";
 
 const setListener = () => {
-    document.querySelectorAll(".hotel__individualNames").forEach((hotelName, index) => {
-        hotelName.addEventListener("click", () => {
-            google.maps.event.trigger(markers[index], "click")
+    document.querySelectorAll(".category_list").forEach((category, index) => {
+        category.addEventListener("click", (data) => {
+            createLocationMarkers(data.srcElement.id)
         })
     })
 }
 
-const displayHotelList = () => {
-    let hotelHTML = "";
-    hotels.forEach(hotel => {
-        hotelHTML += `<h4 class="hotel__individualNames">${hotel.name}</h4>`
+const displayListCategories = () => {
+    let categoriaList = "";
+    categorias.forEach(categoria => {
+        categoriaList += `<h5 class="category_list" id="${categoria.id}">${categoria.name}</h5>`
     })
-    document.getElementById("hotel__names").innerHTML = hotelHTML
+    document.getElementById("hotel__names").innerHTML = categoriaList;
 }
 
-const createMarker = (coord, name, address, phone) => {
+// const displayHotelList = () => {
+//     let hotelHTML = "";
+//     listado.hotels.forEach(hotel => {
+//         hotelHTML += `<h4 class="hotel__individualNames">${hotel.name}</h4>`
+//     })
+//     document.getElementById("hotel__names").innerHTML = hotelHTML
+// }
+
+const createMarker = (hotel) => { //TERMINAR DE EDITAR CÓDIGO
     // let html = `<div class="window">
     //             <h2>${name}</h2>
     //             <div class="address">
@@ -69,10 +76,10 @@ function initMap() {
     })
     // console.log(hotels)
     createLocationMarkers();
-    const marker = new google.maps.Marker({
-        position: barcelona,
-        map: map,
-    })
+    // const marker = new google.maps.Marker({
+    //     position: barcelona,
+    //     map: map,
+    // })
 
     // infoWindow = new google.maps.InfoWindow();
     // let html = `<h3>Centro de la ciudad</h3>`;

@@ -27,10 +27,26 @@
 </head>
 
 <body>
-    <!-- <div class="hotel__list">
-        <h3>Hoteles 5* Barcelona</h3>
-        <div class="hotel__names" id="hotel__names"></div>
+    <!-- <div class="hotel__list dropdown">
+        <button class="btn btn-danger" type="button" id="menu" data-toggle="dropdown">
+            <i class="fas fa-bars"></i></button>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">HTML</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">CSS</a></li>
+        </ul>
     </div> -->
+
+    <div class="btn-group dropup hotel__list">
+        <button type="button" class="btn btn-secondary" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="dropdown-menu">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">PARADAS DE COLECTIVO</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">INFORMACIÓN ÚTIL</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">ILUMINARIAS</a></li>
+        </div>
+    </div>
 
     <div class="modal fade" tabindex="-1" role="dialog" id="myModal" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
@@ -46,14 +62,8 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <div class="container-fluid">
-                            <!-- <div class="col-12"> -->
-                                <!-- <div class="col-8">
-                                    <i class="fas fa-map-marker-alt fa-lg"></i>
-                                    <p id="modal-text"></p>
-                                    <p id="modal-phone"></p>
-                                </div>
-                                <div class="col-4"><img src="icons/hotel.png" style="width: 50px;height:50px"></div> -->
+                        <div class="row">
+                            <div class="col-8">
                                 <div class="address">
                                     <i class="fas fa-map-marker-alt fa-lg"></i>
                                     <h5 id="modal-text"></h5>
@@ -62,7 +72,8 @@
                                     <i class="fas fa-phone-alt fa-lg"></i>
                                     <h5 id="modal-phone"></h5>
                                 </div>
-                            <!-- </div> -->
+                            </div>
+                            <div class="col-4"><img src="icons/hotel.png" style="width: 150px;height:150px"></div>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -72,8 +83,7 @@
             </div>
         </div>
     </div>
+
     <div id="map"></div>
-
 </body>
-
 </html>

@@ -11,14 +11,15 @@ body {
 
 .hotel__list {
     position: absolute;
-    top: 10vh;
+     top: 90vh;
     left: 5vw;
-    bottom: 30vh;
+    bottom: 15vh; 
+    right: 90vw;
     width: fit-content;
     border: 2px solid black;
     z-index: 5;
     color: white;
-    background-color: #333;
+    background-color: #fff;
     opacity: 0.8;
     border-radius: 20px;
     font-weight: bold;
@@ -26,6 +27,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    box-shadow: 0px 2px 5px #333;
 }
 
 .hotel__list>h3 {
