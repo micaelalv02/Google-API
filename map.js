@@ -1,5 +1,6 @@
 let map;
 let markers = [];
+let seleccion = "";
 
 const setListener = () => {
     document.querySelectorAll(".hotel__individualNames").forEach((hotelName, index) => {
@@ -8,7 +9,6 @@ const setListener = () => {
         })
     })
 }
-
 
 const displayHotelList = () => {
     let hotelHTML = "";
@@ -19,16 +19,16 @@ const displayHotelList = () => {
 }
 
 const createMarker = (coord, name, address, phone) => {
-    let html = `<div class="window">
-                <h2>${name}</h2>
-                <div class="address">
-                    <i class="fas fa-map-marker-alt fa-lg"></i>
-                    <h3>${address}</h3>
-                </div>    
-                <div class="phone">
-                    <i class="fas fa-phone-alt fa-lg"></i>
-                    <h3>${phone}</h3>
-                </div>`
+    // let html = `<div class="window">
+    //             <h2>${name}</h2>
+    //             <div class="address">
+    //                 <i class="fas fa-map-marker-alt fa-lg"></i>
+    //                 <h3>${address}</h3>
+    //             </div>    
+    //             <div class="phone">
+    //                 <i class="fas fa-phone-alt fa-lg"></i>
+    //                 <h3>${phone}</h3>
+    //             </div>`
 
     const marker = new google.maps.Marker({
         position: coord,
@@ -36,27 +36,25 @@ const createMarker = (coord, name, address, phone) => {
         icon: "./icons/hotel.png"
     })
     google.maps.event.addListener(marker, "click", () => {
-        showModal();
+        $("#myModal").modal();
+        document.getElementById('modal-title').textContent = name;
+        document.getElementById('modal-text').textContent = address;
+        document.getElementById('modal-phone').textContent = phone;
+        // showModal();
         // infoWindow.setContent(html);
         // infoWindow.open(map, marker)
     })
     markers.push(marker)
 }
 
-const showModal = () => {
-    // $("#").html()
-    console.log('show modal');
-    $("#myModal").modal("show");
-}
-
 const createLocationMarkers = () => {
     let bounds = new google.maps.LatLngBounds();
-    hotels.forEach(hotel => {
+    listado.hotels.forEach(hotel => {
         let coord = new google.maps.LatLng(hotel.lat, hotel.lng);
         let name = hotel.name;
         let address = hotel.address;
         let phone = hotel.phone;
-        bounds.extend(coord);
+        bounds.extend(coord)
         createMarker(coord, name, address, phone);
         map.fitBounds(bounds);
     })

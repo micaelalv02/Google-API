@@ -40,6 +40,10 @@ body {
     cursor: pointer;
 }
 
+.modal-content{
+    width: 550px;
+}
+
 .window {
     height: fit-content;
     width: fit-content;
@@ -85,5 +89,5 @@ body {
 
 .gm-ui-hover-effect {
     background: #fff !important;
-    border-radius: 50%;
+    border-radius: 50% !important;
 }
