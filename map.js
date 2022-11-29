@@ -36,11 +36,12 @@ const createMarker = (hotel) => { //TERMINAR DE EDITAR CÓDIGO
     //                 <i class="fas fa-phone-alt fa-lg"></i>
     //                 <h3>${phone}</h3>
     //             </div>`
+    let coord = new google.maps.LatLng(hotel.lat, hotel.lng);
 
     const marker = new google.maps.Marker({
         position: coord,
         map: map,
-        icon: "./icons/hotel.png"
+        // icon: "./icons/hotel.png"
     })
     google.maps.event.addListener(marker, "click", () => {
         $("#myModal").modal();
@@ -57,7 +58,7 @@ const createMarker = (hotel) => { //TERMINAR DE EDITAR CÓDIGO
 const createLocationMarkers = () => {
     let bounds = new google.maps.LatLngBounds();
     listado.hotels.forEach(hotel => {
-        let coord = new google.maps.LatLng(hotel.lat, hotel.lng);
+
         let name = hotel.name;
         let address = hotel.address;
         let phone = hotel.phone;
