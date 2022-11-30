@@ -9,7 +9,7 @@
         integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <script src="data.js"></script>
     <script defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC4uW5G2RJA6woNvgpUMI8e0X-7se29vMU&map_ids=3e5ce2fc8ff023bf&callback=initMap"
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC4uW5G2RJA6woNvgpUMI8e0X-7se29vMU&map_ids=713dddf179152f7c&callback=initMap"
         type="text/javascript"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
@@ -23,61 +23,62 @@
     <link rel="stylesheet" href="style.css">
     <script src="map.js"></script>
     <script src="data.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Toggle collapse element on button click
+            $("#toggleBtn").click(function () {
+                $("#myCollapse").collapse("toggle");
+            });
+        });
+    </script>
     <title>Google Maps API</title>
 </head>
 
-<body>
-    <!-- <div class="hotel__list dropdown">
-        <button class="btn btn-danger" type="button" id="menu" data-toggle="dropdown">
-            <i class="fas fa-bars"></i></button>
-        <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">HTML</a></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">CSS</a></li>
-        </ul>
-    </div> -->
 
-    <div class="btn-group dropup hotel__list">
-        <button type="button" class="btn btn-secondary" data-toggle="dropdown" aria-haspopup="true"
-            aria-expanded="false">
-            <i class="fas fa-bars"></i>
-        </button>
-        <div class="dropdown-menu">
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">PARADAS DE COLECTIVO</a></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">INFORMACIÓN ÚTIL</a></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">ILUMINARIAS</a></li>
+
+<body>
+
+    <a class="menu-bar" data-toggle="collapse" href="#menu">
+        <button class="boton btn"><i class="fas fa-bars"></i></button>
+    </a>
+    <div class="hotel__list">
+        <div class="collapse menu" id="menu">
+            <div class="hotel__names" id="hotel__names">
+            </div>
         </div>
     </div>
 
-    <div class="modal fade" tabindex="-1" role="dialog" id="myModal" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
+    <div class=" modal fade" tabindex="-1" role="dialog" id="myModal" aria-labelledby="ModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
             <div class="container">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <div>
-                            <h3 id="modal-title"></h3>
-                        </div>
+                        <h2 id="modal-title" id="ModalLabel"></h2>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div class="modal-body">
+                    <div class="modal-body" id="modal-body">
                         <div class="row">
-                            <div class="col-8">
+                            <div class="col-md-6">
                                 <div class="address">
                                     <i class="fas fa-map-marker-alt fa-lg"></i>
-                                    <h5 id="modal-text"></h5>
+                                    <h4></h4>
                                 </div>
                                 <div class="phone">
                                     <i class="fas fa-phone-alt fa-lg"></i>
-                                    <h5 id="modal-phone"></h5>
+                                    <h6></h6>
                                 </div>
+                                <br>
+                                <p></p>
                             </div>
-                            <div class="col-4"><img src="icons/hotel.png" style="width: 150px;height:150px"></div>
+                            <div class="col-md-6">
+                                <img src="icons/hotel.png" style="width: 200px;height:200px">
+                            </div>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-danger active" data-dismiss="modal">Cerrar</button>
                     </div>
                 </div>
             </div>
@@ -86,4 +87,5 @@
 
     <div id="map"></div>
 </body>
+
 </html>

@@ -12,7 +12,7 @@ const setListener = () => {
 const displayListCategories = () => {
     let categoriaList = "";
     categorias.forEach(categoria => {
-        categoriaList += `<h5 class="category_list" id="${categoria.id}">${categoria.name}</h5>`
+        categoriaList += `<h5 class="category_list" id="${categoria.id}">${categoria.name}</h5><hr>`
     })
     document.getElementById("hotel__names").innerHTML = categoriaList;
 }
@@ -25,7 +25,7 @@ const displayListCategories = () => {
 //     document.getElementById("hotel__names").innerHTML = hotelHTML
 // }
 
-const createMarker = (hotel) => { //TERMINAR DE EDITAR CÓDIGO
+const createMarker = (hotel) => {
     // let html = `<div class="window">
     //             <h2>${name}</h2>
     //             <div class="address">
@@ -44,10 +44,7 @@ const createMarker = (hotel) => { //TERMINAR DE EDITAR CÓDIGO
         // icon: "./icons/hotel.png"
     })
     google.maps.event.addListener(marker, "click", () => {
-        $("#myModal").modal();
-        document.getElementById('modal-title').textContent = name;
-        document.getElementById('modal-text').textContent = address;
-        document.getElementById('modal-phone').textContent = phone;
+        showModal(hotel);
         // showModal();
         // infoWindow.setContent(html);
         // infoWindow.open(map, marker)
@@ -55,17 +52,32 @@ const createMarker = (hotel) => { //TERMINAR DE EDITAR CÓDIGO
     markers.push(marker)
 }
 
-const createLocationMarkers = () => {
-    let bounds = new google.maps.LatLngBounds();
-    listado.hotels.forEach(hotel => {
+const showModal = (data) => {
+    $("h2").html(data.name)
+    $("h4").html(data.address)
+    $("p").html(data.descripcion)
+    $("src").html(data.imagen)
+    $("h6").html(data.phone)
+    $("#myModal").modal("show");
+}
 
-        let name = hotel.name;
-        let address = hotel.address;
-        let phone = hotel.phone;
+const removeAllMarkers = () => {
+    for (let i = 0; i < markers.length; i++) {
+        markers[i].setMap(null);
+    }
+}
+
+const createLocationMarkers = (category) => {
+    removeAllMarkers();
+    let bounds = new google.maps.LatLngBounds();
+
+    hotels.forEach(hotel => {
+        if (category != "" && category != hotel.categoria) return;
+        let coord = new google.maps.LatLng(hotel.lat, hotel.lng)
         bounds.extend(coord)
-        createMarker(coord, name, address, phone);
-        map.fitBounds(bounds);
+        createMarker(hotel);
     })
+    map.fitBounds(bounds);
 }
 
 function initMap() {
@@ -73,17 +85,29 @@ function initMap() {
     map = new google.maps.Map(document.getElementById("map"), {
         center: barcelona,
         zoom: 14,
-        mapId: "3e5ce2fc8ff023bf",
+        mapId: "713dddf179152f7c"
     })
-    // console.log(hotels)
-    createLocationMarkers();
-    // const marker = new google.maps.Marker({
-    //     position: barcelona,
-    //     map: map,
-    // })
 
-    // infoWindow = new google.maps.InfoWindow();
-    // let html = `<h3>Centro de la ciudad</h3>`;
-    displayHotelList();
+    createLocationMarkers();
+    displayListCategories()
     setListener();
+
+
+    // let barcelona = { lat: 41.390205, lng: 2.154007 }
+    // map = new google.maps.Map(document.getElementById("map"), {
+    //     center: barcelona,
+    //     zoom: 14,
+    //     mapId: "713dddf179152f7c",
+    // })
+    // createLocationMarkers();
+    // // console.log(hotels)
+    // // const marker = new google.maps.Marker({
+    // //     position: barcelona,
+    // //     map: map,
+    // // })
+
+    // // infoWindow = new google.maps.InfoWindow();
+    // // let html = `<h3>Centro de la ciudad</h3>`;
+    // displayListCategories();
+    // setListener();
 }
