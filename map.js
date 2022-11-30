@@ -67,7 +67,7 @@ const removeAllMarkers = () => {
     }
 }
 
-const createLocationMarkers = (category) => {
+const createLocationMarkers = (category = "") => {
     removeAllMarkers();
     let bounds = new google.maps.LatLngBounds();
 
