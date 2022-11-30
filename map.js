@@ -12,7 +12,7 @@ const setListener = () => {
 const displayListCategories = () => {
     let categoriaList = "";
     categorias.forEach(categoria => {
-        categoriaList += `<h5 class="category_list" id="${categoria.id}">${categoria.name}</h5><hr>`
+        categoriaList += `<h5 class="category_list" id="${categoria.id}">${categoria.name}</h5><hr>`;
     })
     document.getElementById("hotel__names").innerHTML = categoriaList;
 }
@@ -53,11 +53,11 @@ const createMarker = (hotel) => {
 }
 
 const showModal = (data) => {
-    $("h2").html(data.name)
-    $("h4").html(data.address)
-    $("p").html(data.descripcion)
-    $("src").html(data.imagen)
-    $("h6").html(data.phone)
+    $("#myModal h2").html(data.name)
+    $("#myModal h4").html(data.address)
+    $("#myModal p").html(data.descripcion)
+    $("#myModal img").attr("src", data.imagen)
+    $("#myModal h6").html(data.phone)
     $("#myModal").modal("show");
 }
 
@@ -72,7 +72,9 @@ const createLocationMarkers = (category = "") => {
     let bounds = new google.maps.LatLngBounds();
 
     hotels.forEach(hotel => {
-        if (category != "" && category != hotel.categoria) return;
+        if (category != "" && category != hotel.categoria) {
+            return;
+        };
         let coord = new google.maps.LatLng(hotel.lat, hotel.lng)
         bounds.extend(coord)
         createMarker(hotel);
