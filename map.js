@@ -38,10 +38,10 @@ const createMarker = (hotel) => {
     //             </div>`
     let coord = new google.maps.LatLng(hotel.lat, hotel.lng);
 
-    const marker = new google.maps.Marker({
+    const marker = new google.maps.Marker({ //agregar icono por cada categoria
         position: coord,
         map: map,
-        // icon: "./icons/hotel.png"
+        icon: "./icons/hotel.png"
     })
     google.maps.event.addListener(marker, "click", () => {
         showModal(hotel);
